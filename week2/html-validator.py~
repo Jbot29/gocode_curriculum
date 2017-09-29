@@ -1,0 +1,82 @@
+import re
+
+
+test_html = '''<html><body><div><h1>Test Html</h1><p></p></div></body></html>'''
+test_bad_html = '''<html><body><div><h1>Test Html</h1><p></div></body></html>'''
+test_bad_html2 = "</div>"
+test_bad_html3 = "<div>"
+
+
+
+def get_tokens(html):
+    """Converts a string of html into an array of tokens"""
+    tokens = []
+    temp_s = ""
+    
+    for c in html:
+
+        if c == '<' and len(temp_s):
+            tokens.append(temp_s)
+            temp_s = ""
+
+        temp_s += c
+        
+        if c == '>':
+            tokens.append(temp_s)
+            temp_s = ""
+
+    return tokens
+
+def open_tag(token):
+    """takes a string token, checks it matches <*> if so return the tag name"""
+    m = re.match(r'<(\w+)>',token)
+    if m:
+        return m.groups()[0]
+    return None
+        
+def close_tag(token):
+    """takes string token, checks if matches </*> if so return tag name"""
+    m = re.match(r'</(\w+)>',token)
+    if m:
+        return m.groups()[0]
+    return False
+    
+def valid_html(tokens):
+    """takes an array of tokens parsed from html, and validates correct ordering of open/close"""
+    stack = []
+
+    for token in tokens:
+        
+        #check if open 
+        is_open_tag = open_tag(token)
+
+        if is_open_tag:
+            #if an open push on the stack
+            stack.append(is_open_tag)
+
+        #check if close
+        is_close_tag = close_tag(token)
+
+        if is_close_tag:
+            
+            #make sure that there is data to pop
+            if len(stack) == 0:
+                #we got a close but no open
+                return False
+            
+            #if close tag pop and test
+            last_tag = stack.pop()
+
+            if last_tag != is_close_tag:
+                return False
+
+
+    if len(stack) > 0:
+        #open tag(s) with no close
+        return False
+    
+    return True
+        
+    
+
+

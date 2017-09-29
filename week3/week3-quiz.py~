@@ -1,0 +1,14 @@
+
+
+a = [('client1','blah'),('client1','other'),('client1','other'),('client2','blah'),('client2','other'),('client3','other')]
+
+r = {}
+
+for row in a:
+    r.setdefault(row[0],0)
+    r[row[0]] += 1
+
+
+assert r == {'client1': 3, 'client2': 2, 'client3': 1}
+
+

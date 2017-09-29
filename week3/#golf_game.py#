@@ -1,0 +1,149 @@
+'''
+Classes can be used to map a data to an object.
+
+This is an important concept used in web development.
+
+Often times, one class will be mapped to a single table.
+
+In this exercise, you will implement this idea and build a create a golf game with the following classes:
+
+1) A CourseLayout class:
+
+This reads in a filename (default_layout.txt) and stores the scores in memory.
+
+This class has an initialize method that takes in the txt file and parses it.
+
+It has a method called par_value() that returns the value of a particular hole in the course.
+
+2) A PlayerScore class:
+
+This reads in a player information from a hash:
+
+{"name":"Jonathan Lau", "scores": [3,3,3,3,3,3,3,3,3,3,...]}
+
+The hash contains the name of the player and all 18 scores in a list.
+
+The class stores these in variables for easy access.
+
+E.g. p.name => "Jonathan Lau"
+E.g. p.scores => [3,3,3,3,3,3,.....]
+
+3) A LeaderBoard Class:
+
+This reads in tournament information as a hash and builds a leaderboard:
+
+tournament_info = {"courselayout":[1,2,3,4,5,6...],"players_scores":[{"name":"Jonathan Lau", "scores": [3,3,3,3,3,3,3,3,3,3,...]}, {"name": "Jeremy Schwartz", "scores": [3,3,3,3,3,3,3,3,3,3,...]}]
+
+board = LeaderBoard(tournament_info)
+
+It has 3 methods:
+
+1) This class has a method called player_score_for_hole(().) 
+
+It reads in player name and the hole number and returns the golf_score for that hole/player (which is hole par value minus number of strokes for that player)
+
+E.g.
+board.player_score_for_hole("Jonathan Lau",1) => 0
+board.player_score_for_hole("Jonathan Lau",18) => -2
+
+2) It has a method that prints the board to terminal
+
+3) It has a method that returns the leaderboard info as an array of hashes
+
+'''
+
+
+class CourseLayout:
+    def __init__(self, filename):
+        #takes in the filename of the course and parses file info and stores it in
+        #an array
+        pass
+
+    def par_value(self,hole_number):
+        pass
+   	#returns the par_value of that particular hole_number
+
+class PlayerScores:
+    def __init__(self,filename):
+        #read scores files and convert to array of hashes
+        pass
+
+class Player:
+    def __init__(self, player_information_hash):
+        pass
+        #{"name":"Jonathan Lau", "scores": [3,3,3,3,3,3,3,3,3,3,...]}
+        #stores name in an instance variable and scores array in another instance variable
+
+    def total_score():
+    	pass
+    	# returns total score
+
+    def player_information():
+        # returns a hash
+        pass
+
+class LeaderBoard:
+    def __init__(self, course_layout, players):
+    	# takes in a courselayout class and an array of player scores
+        print "Create a Dog"
+
+    def score_board(self):
+    	pass
+    	#returns an array of hashes:
+    	#[{"name":"Jonathan Lau","total_score":72,"par_score": 1},{"name":"Jeremy Schwartz","total_score":74,"par_score": 2}]
+
+    def player_score_for_hole(self, player_name, hole_number):
+      pass
+
+    def print_board(self):
+        pass
+	#prints the board to the terminal, it should look like this:
+	#Jonathan Lau | 72 | +1
+	#Jeremy Schwartz | 74 | +2
+
+def read_data(filename):
+    with open(filename,"r") as f:
+        return f.readlines()
+    
+# Using the filehandler class that you created in previous exercise, establish an instance of it.
+# e.g. fh = FileHandler('default_scores.txt')
+# Then assign the filedata to a variable
+# e.g. all_data = fh.file_data
+
+# Create an array of Players instances
+# Hint: Iterate through all_data, convert the data into this format to pass into Player():
+#{"name":"Jonathan Lau", "scores": [3,3,3,3,3,3,3,3,3,3,...]}
+
+# Loop through the array of players and print all the names and scores as follows:
+# Jonathan Lau: 72
+# Jeremy Schwartz: 82
+
+# Create an instance of the CourseLayout class using the default_hole_layout.txt file.
+
+
+# Print out the par_value of the 15th hole in the golf course using the method par_value.
+
+
+# 3) Using 1) and 2) and for loops, convert into the following hash:
+# tournament_info = {"courselayout":[1,2,3,4,5,6...],"players_scores":[{"name":"Jonathan Lau", "scores": [3,3,3,3,3,3,3,3,3,3,...]}, {"name": "Jeremy Schwartz", "scores": [3,3,3,3,3,3,3,3,3,3,...]}]
+
+# 4) Create an instance of the LeaderBoard class.  Pass in tournament_info.
+
+board = LeaderBoard(tournament_info)
+
+assert board.scoreboard() = [{"name":"Jonathan Lau","total_score":73,"par_score": 1},{"name":"Jeremy Schwartz","total_score":74,"par_score": 2}]
+
+# Draw a scope diagram for this program!
+
+# Bonus: Create another class called ScoreCardBuilder - this class takes in data stores the data in a text file (e.g. default_scores.txt).  
+# The class will have a method called add_scores() where you can pass in user name and score information
+
+# Double Bonus - Feel free to get creative here:
+# Create another class called GameInterface.
+# This class interacts with the terminal to ask for data, e.g.
+# How many players are in the golf tournament?
+# How many holes are in the golf course?
+# What are the player names?
+#  What are the scores for player 1? [3,3,3,3,3]
+# Hole 1: What is the score for player 2? [3,3,3,3,3]
+# The Game class uses the other classes to read/write to files and store player information data

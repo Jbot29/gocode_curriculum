@@ -1,0 +1,23 @@
+
+
+dirname = '.'
+
+def iterative_find(current_path):
+    path_stack = [current_path]
+
+
+    for name in os.listdir(current_path):
+        
+        path = os.path.join(current_path, name)
+        
+        if os.path.isdir(path):
+            print "Directory Found:" + path
+            path_stack.append(path)
+        else:
+            print "File Found:" + path
+
+
+iterative_find(dirname)
+
+
+    

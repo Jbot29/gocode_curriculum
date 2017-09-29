@@ -1,0 +1,16 @@
+
+
+#Scope
+
+
+
+
+
+
+#pass by value
+
+
+def ref_demo(x):
+    print "x=",x," id=",id(x)
+    x=42
+    print "x=",x," id=",id(x)

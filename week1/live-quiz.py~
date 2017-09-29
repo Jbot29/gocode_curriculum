@@ -1,0 +1,24 @@
+
+
+
+
+
+
+
+
+
+
+
+def ui_loop():
+    print "Live Python Trainer"
+
+    
+
+
+question =  "There is a hash called items, add a new key 'Susan' with a value '555-1212'"
+
+items = {}
+
+answer = raw_input(question)
+
+print answer

@@ -1,0 +1,8 @@
+#convert text to array
+
+#takes a string returns an array of strings broken by new line and by a max number count
+
+#follow up function
+
+#be able to go through that array character by character
+

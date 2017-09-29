@@ -1,0 +1,11 @@
+'''
+
+Mimic classes with just hashes.
+
+
+'''
+
+
+def counter_class():
+    return {"counter": 0,
+            "count": lambda f_self: f_self["count"]}
